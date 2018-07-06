@@ -64,7 +64,7 @@ namespace GEngine {
 		Matrix4 Matrix4::identity() {
 			return Matrix4(1);
 		}
-		Matrix4 Matrix4::orthographic(float left, float right, float top, float bottom, float near, float far) {
+		Matrix4 Matrix4::orthographic(float left, float right, float bottom, float top, float near, float far) {
 			Matrix4 result = Matrix4::identity();
 			//col major order indexed as row + col * 4(size)
 			result.elements[0 + 0 * 4] = 2.0f / (right - left);

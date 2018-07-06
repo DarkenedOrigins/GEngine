@@ -53,8 +53,12 @@ namespace GEngine {
 		}
 
 		void Window::update() {
+			GLenum error = glGetError();
+			if (error != GL_NO_ERROR) {
+				std::cout << "OpenGL error: " << error << std::endl;
+			}
 			glfwPollEvents();
-			glfwGetFramebufferSize(window_, &width_, &height_);
+			//glfwGetFramebufferSize(window_, &width_, &height_);
 			glfwSwapBuffers(window_);
 		}
 
