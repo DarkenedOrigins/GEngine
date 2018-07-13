@@ -12,6 +12,7 @@ namespace GEngine {
 			for (auto &buf : buffers_) {
 				delete buf;
 			}
+			glDeleteBuffers(1, &vertexArrayId_);
 		}
 
 		void VertexArray::addBuffer(Buffer * buffer, GLuint index) {

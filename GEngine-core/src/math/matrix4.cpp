@@ -27,22 +27,45 @@ namespace GEngine {
 		}
 		Matrix4& Matrix4::multiply(const Matrix4& other) {
 			//col major order indexed as row + col * 4(size)
-			for (int row = 0; row < 4; row++) {
-				for (int col = 0; col < 4; col++) {
+			float data[16];
+			for (int y = 0; y < 4; y++) {
+				for (int x = 0; x < 4; x++) {
 					float sum = 0;
 					//this loop to iterate over other matrix column
 					for (int e = 0; e < 4; e++) {
-						sum += this->elements[row + e * 4] * other.elements[e + col * 4];
+						sum += this->elements[x + e * 4] * other.elements[e + y * 4];
 					}
-					this->elements[row + col * 4] = sum;
+					data[x + y * 4] = sum;
 				}
 			}
+			memcpy(this->elements, data, 4 * 4 * sizeof(float));	// its a 4 by 4 matrix of floats hence 4 * 4 * sizeof(float)
 			return *this;
+		}
+		Vec3 Matrix4::multiply(const Vec3 & other) const {
+			return Vec3(
+				columns[0].x * other.x + columns[1].x * other.y + columns[2].x * other.z + columns[3].x,
+				columns[0].y * other.x + columns[1].y * other.y + columns[2].y * other.z + columns[3].y,
+				columns[0].z * other.x + columns[1].z * other.y + columns[2].z * other.z + columns[3].z
+			);
+		}
+		Vec4 Matrix4::multiply(const Vec4 & other) const {
+			return Vec4(
+				columns[0].x * other.x + columns[1].x * other.y + columns[2].x * other.z + columns[3].x * other.w, 
+				columns[0].y * other.x + columns[1].y * other.y + columns[2].y * other.z + columns[3].y * other.w, 
+				columns[0].z * other.x + columns[1].z * other.y + columns[2].z * other.z + columns[3].z * other.w, 
+				columns[0].w * other.x + columns[1].w * other.y + columns[2].w * other.z + columns[3].w * other.w 
+			);
 		}
 		//operators 
 		Matrix4 operator*(const Matrix4& left, const Matrix4& right) {
 			Matrix4 retval = left;
 			return retval.multiply(right);
+		}
+		Vec3 operator*(const Matrix4 & left, const Vec3 & right) {
+			return left.multiply(right);
+		}
+		Vec4 operator*(const Matrix4 & left, const Vec4 & right) {
+			return left.multiply(right);
 		}
 		Matrix4& Matrix4::operator*=(const Matrix4& other) {
 			return this->multiply(other);
@@ -95,10 +118,10 @@ namespace GEngine {
 			return result;
 		}
 		Matrix4 Matrix4::rotation(float degrees, const Vec3& axis) {
-			Matrix4 result(1);
+			Matrix4 result(1.0f);
 			float rad = toRad(degrees);
-			float c = cosf(rad);
-			float s = sinf(rad);
+			float c = cos(rad);
+			float s = sin(rad);
 			float oneMinusCos = 1.0f - c;
 			float x = axis.x;
 			float y = axis.y;
@@ -106,15 +129,15 @@ namespace GEngine {
 			//col major order indexed as row + col * 4(size)
 			result.elements[0 + 0 * 4] = x * oneMinusCos + c;
 			result.elements[1 + 0 * 4] = y * x * oneMinusCos + z * s;
-			result.elements[1 + 0 * 4] = x * z * oneMinusCos - y * s;
+			result.elements[2 + 0 * 4] = x * z * oneMinusCos - y * s;
 
 			result.elements[0 + 1 * 4] = x * y*oneMinusCos - z * s;
 			result.elements[1 + 1 * 4] = y * oneMinusCos + c;
 			result.elements[2 + 1 * 4] = y * z*oneMinusCos + x * s;
 
 			result.elements[0 + 2 * 4] = x * z*oneMinusCos + y * s;
-			result.elements[0 + 2 * 4] = y * z*oneMinusCos - x * s;
-			result.elements[0 + 2 * 4] = z * oneMinusCos + c;
+			result.elements[1 + 2 * 4] = y * z*oneMinusCos - x * s;
+			result.elements[2 + 2 * 4] = z * oneMinusCos + c;
 
 			return result;
 		}

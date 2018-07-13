@@ -13,6 +13,9 @@ namespace GEngine {
 			//unbind buffer so user can choose to bind or unbind
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
+		IndexBuffer::~IndexBuffer() {
+			glDeleteBuffers(1, &bufferId_);
+		}
 		void IndexBuffer::bind() const {
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->bufferId_);
 		}

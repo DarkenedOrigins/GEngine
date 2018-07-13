@@ -13,6 +13,10 @@ namespace GEngine {
 			Matrix4();
 			Matrix4(float diagonal);
 			Matrix4& multiply(const Matrix4& other);
+			//extra multiply methods for various reasons
+			Vec3 multiply(const Vec3& other) const;
+			Vec4 multiply(const Vec4& other) const;
+
 			//static methods so Matrix4 matrix = Matrix4::identity() (and so on) can be used
 			static Matrix4 identity();
 			static Matrix4 orthographic(float left, float right, float bottom, float top, float near, float far);
@@ -22,6 +26,9 @@ namespace GEngine {
 			static Matrix4 scale(const Vec3& scale);
 			//operator overloads
 			friend Matrix4 operator*(const Matrix4& left, const Matrix4& right);
+			//operator overloads as well
+			friend Vec3 operator*(const Matrix4& left, const Vec3& right);
+			friend Vec4 operator*(const Matrix4& left, const Vec4& right);
 			Matrix4& operator*=(const Matrix4& other);
 			friend std::ostream& operator<<(std::ostream& stream, const Matrix4& matrix);
 

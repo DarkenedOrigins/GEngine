@@ -1,13 +1,14 @@
 #include "simpler2Drenderer.h"
+#include "renderable2d.h"
 
 void GEngine::graphics::Simple2DRenderer::submit(const Renderable2D* renderable) {
-	renderQueue_.push_back(renderable);
+	renderQueue_.push_back((StaticSprite*)renderable);
 }
 
 void GEngine::graphics::Simple2DRenderer::flush() {
 	// loops thru the queue and renders everything within it 
 	while (!renderQueue_.empty()) {
-		const Renderable2D* renderable = renderQueue_.front();
+		const StaticSprite* renderable = renderQueue_.front();
 		renderable->getVAO()->bind();
 		renderable->getIBO()->bind();
 		renderable->getShader().setUniformMatrix4("ml_matrix", math::Matrix4::translation(renderable->getPosition()));
