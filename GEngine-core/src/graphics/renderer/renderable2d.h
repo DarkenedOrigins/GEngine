@@ -7,6 +7,7 @@
 #include "..\..\math\math.h"
 #include "../shader.h"
 #include "renderer2D.h"
+#include "../texture.h"
 
 namespace GEngine {
 	namespace graphics {
@@ -14,6 +15,7 @@ namespace GEngine {
 		struct VertexData {
 			math::Vec3 vertex;
 			math::Vec2 texCoord;
+			float texId;
 			unsigned int color;
 		};
 
@@ -23,6 +25,7 @@ namespace GEngine {
 			math::Vec3 position_;
 			math::Vec4 color_;
 			std::vector<math::Vec2> texCoords_;
+			Texture* texture_;
 
 		protected:
 			Renderable2D() { setTexCoordDefaults(); }	//empty constructor so group does not need to take in size position and color
@@ -41,6 +44,7 @@ namespace GEngine {
 			inline const math::Vec3& getPosition() const { return position_; }
 			inline const math::Vec4& getColor() const { return color_; }
 			inline const std::vector<math::Vec2>& getTexCoord() const { return texCoords_; }
+			inline const GLuint getTId() const{ return texture_ == nullptr ? 0 : texture_->getId(); }
 
 		private:
 			void setTexCoordDefaults() {

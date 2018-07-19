@@ -19,6 +19,7 @@ namespace GEngine {
 			void unbind() const;
 			inline const unsigned int getWidth() { return width_; }
 			inline const unsigned int getHeight() { return height_; }
+			inline const GLuint getId() { return textureId_; }
 
 		private:
 			GLuint load();

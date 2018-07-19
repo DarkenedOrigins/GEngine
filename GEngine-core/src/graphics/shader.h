@@ -20,6 +20,10 @@ namespace GEngine {
 
 			void setUniform1i(const GLchar* name, int val);
 			void setUniform1f(const GLchar* name, float val);
+
+			void setUniform1fv(const GLchar* name, float* value, int count);
+			void setUniform1iv(const GLchar* name, int* value, int count);
+
 			void setUniform2f(const GLchar* name, const math::Vec2& vec);
 			void setUniform3f(const GLchar* name, const math::Vec3& vec);
 			void setUniform4f(const GLchar* name, const math::Vec4& vec);

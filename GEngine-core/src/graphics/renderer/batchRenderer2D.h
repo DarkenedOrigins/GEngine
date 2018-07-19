@@ -16,7 +16,8 @@ namespace GEngine {
 
 		#define SHADER_VERTEX_INDEX		(0)
 		#define SHADER_TEX_COORD_INDEX	(1)
-		#define SHDER_COLOR_INDEX		(2)
+		#define SHADER_TID_INDEX		(2)
+		#define SHADER_COLOR_INDEX		(3)
 
 
 		class BatchRenderer2D : public Renderer2D {
@@ -26,6 +27,7 @@ namespace GEngine {
 			IndexBuffer* ibo_;
 			GLsizei indexCount_;
 			VertexData* buffer_; //this is the buffer open in opengl
+			std::vector<GLuint> textureSlots_;
 
 		public:
 			BatchRenderer2D();
