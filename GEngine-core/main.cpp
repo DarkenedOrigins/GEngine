@@ -38,14 +38,14 @@ int main() {
 	Texture texture("test.png");
 
 
-	#if LARGE_TEST
+
 	for (float y = -9; y < 9; y += 1) {
 		for (float x = -16; x < 16; x += 1) {
 			//layer.add(new Sprite(x, y, .9f, .9f, Vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1, 1)));
 			layer.add(new Sprite(x, y, .9f, .9f, &texture));
 		}
 	}
-	#endif
+
 
 
 	GLint texIds[] = { 0,1,2,3,4,5,6,7,8,9 };
