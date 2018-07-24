@@ -13,170 +13,234 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\graphics">
+      <UniqueIdentifier>{5d0a7aed-284a-4136-852c-0c3378a9f2e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\math">
+      <UniqueIdentifier>{c8a40f3d-09a7-409d-a08d-b5bc05bb5d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\buffers">
+      <UniqueIdentifier>{6cebd505-2035-4ac9-bfaf-ad4d92645fd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\layers">
+      <UniqueIdentifier>{3ea07f8c-58f7-4435-9331-ed9bf48c6cc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\renderable">
+      <UniqueIdentifier>{02626ea5-06e3-4239-b4c4-7d09e8569390}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\renderer">
+      <UniqueIdentifier>{5ff9739d-10cf-459c-9837-a91bf4836fe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{c0f2a373-5c48-460d-8cef-9ad03264c40d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ext">
+      <UniqueIdentifier>{ecc44805-74fa-4af2-aef5-d063a23a14a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ext\freetype-gl">
+      <UniqueIdentifier>{eb6d0188-4c19-4d52-a9d7-a8936070dba9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ext">
+      <UniqueIdentifier>{3dad0172-34f3-4d57-8f41-333b0e59ec49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics">
+      <UniqueIdentifier>{3a5c3a5a-62c1-49cf-99bc-df750b5bb285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{40b80f53-add5-4157-b4e6-9dac13191764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utilities">
+      <UniqueIdentifier>{b366e450-94f2-43ab-bd3e-6ac2139300b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ext\freetype-gl">
+      <UniqueIdentifier>{801fbe80-204a-4735-bd50-43e629813f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\buffers">
+      <UniqueIdentifier>{4ec96672-f428-4741-ad4d-75de9be966c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\layers">
+      <UniqueIdentifier>{45b5ee43-167d-4594-9214-9f3659ee3ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\renderer">
+      <UniqueIdentifier>{331f44f1-e448-47d2-91d8-bf89529ab52d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\renderable">
+      <UniqueIdentifier>{23c16bc1-852b-4035-af5f-f910d194f528}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\math\vec2.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\math\vec4.cpp">
+      <Filter>Source Files\math</Filter>
     </ClCompile>
     <ClCompile Include="src\math\vec3.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\math</Filter>
     </ClCompile>
-    <ClCompile Include="src\math\vec4.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\math\vec2.cpp">
+      <Filter>Source Files\math</Filter>
     </ClCompile>
     <ClCompile Include="src\math\matrix4.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\math</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\buffers\buffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\buffers\indexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\buffers\vertexArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\renderer\simpler2Drenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\renderer\batchRenderer2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\renderer\sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\renderer\staticSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\tilelayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\group.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\texture.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\window.cpp">
+      <Filter>Source Files\graphics</Filter>
     </ClCompile>
     <ClCompile Include="ext\freetype-gl\platform.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ext\freetype-gl</Filter>
     </ClCompile>
     <ClCompile Include="ext\freetype-gl\texture-atlas.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ext\freetype-gl</Filter>
     </ClCompile>
     <ClCompile Include="ext\freetype-gl\texture-font.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ext\freetype-gl</Filter>
     </ClCompile>
     <ClCompile Include="ext\freetype-gl\vector.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ext\freetype-gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\buffers\indexBuffer.cpp">
+      <Filter>Source Files\graphics\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\buffers\buffer.cpp">
+      <Filter>Source Files\graphics\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\buffers\vertexArray.cpp">
+      <Filter>Source Files\graphics\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\renderer\batchRenderer2D.cpp">
+      <Filter>Source Files\graphics\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\renderer\simpler2Drenderer.cpp">
+      <Filter>Source Files\graphics\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\renderer\sprite.cpp">
+      <Filter>Source Files\graphics\renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\renderer\staticSprite.cpp">
+      <Filter>Source Files\graphics\renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\renderer\label.cpp">
+      <Filter>Source Files\graphics\renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\layers\group.cpp">
+      <Filter>Source Files\graphics\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\layers\layer.cpp">
+      <Filter>Source Files\graphics\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\layers\tilelayer.cpp">
+      <Filter>Source Files\graphics\layers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\graphics\window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\vec2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\vec3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\vec4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\math.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\matrix4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\utilities\fileutils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\buffers\buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\buffers\indexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\buffers\vertexArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\renderer\renderable2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\renderer\renderer2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\renderer\simpler2Drenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\renderer\batchRenderer2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\renderer\sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\renderer\staticSprite.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
     <ClInclude Include="src\utilities\timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\tilelayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\group.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\texture.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
     <ClInclude Include="src\utilities\imageLoad.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="ext\freetype-gl\freetype-gl.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\math\math.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\matrix4.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\vec2.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\vec3.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\vec4.h">
+      <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="ext\freetype-gl\opengl.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ext\freetype-gl</Filter>
     </ClInclude>
     <ClInclude Include="ext\freetype-gl\platform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\freetype-gl\texture-atlas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\freetype-gl\texture-font.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ext\freetype-gl</Filter>
     </ClInclude>
     <ClInclude Include="ext\freetype-gl\vec234.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ext\freetype-gl</Filter>
     </ClInclude>
     <ClInclude Include="ext\freetype-gl\vector.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ext\freetype-gl</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\freetype-gl\freetype-gl.h">
+      <Filter>Header Files\ext\freetype-gl</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\freetype-gl\texture-atlas.h">
+      <Filter>Header Files\ext\freetype-gl</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\freetype-gl\texture-font.h">
+      <Filter>Header Files\ext\freetype-gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\shader.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\texture.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\window.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\buffers\buffer.h">
+      <Filter>Header Files\graphics\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\buffers\indexBuffer.h">
+      <Filter>Header Files\graphics\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\buffers\vertexArray.h">
+      <Filter>Header Files\graphics\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderer\batchRenderer2D.h">
+      <Filter>Header Files\graphics\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderer\renderer2D.h">
+      <Filter>Header Files\graphics\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderer\simpler2Drenderer.h">
+      <Filter>Header Files\graphics\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderer\label.h">
+      <Filter>Header Files\graphics\renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderer\renderable2d.h">
+      <Filter>Header Files\graphics\renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderer\sprite.h">
+      <Filter>Header Files\graphics\renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderer\staticSprite.h">
+      <Filter>Header Files\graphics\renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\layers\group.h">
+      <Filter>Header Files\graphics\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\layers\layer.h">
+      <Filter>Header Files\graphics\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\layers\tilelayer.h">
+      <Filter>Header Files\graphics\layers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\basic.vert" />
-    <None Include="src\shaders\basic.frag" />
     <None Include="packages.config" />
+    <None Include="src\shaders\basic.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\basic.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

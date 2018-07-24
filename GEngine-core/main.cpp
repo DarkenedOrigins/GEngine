@@ -19,6 +19,7 @@
 #include "src\graphics\layers\tilelayer.h"
 #include "src\graphics\layers\group.h"
 #include "src\graphics\texture.h"
+#include "src\graphics\renderer\label.h"
 
 
 int main() {
@@ -27,6 +28,7 @@ int main() {
 	using namespace math;
 
 	Window window("test", 960, 540);
+	//glClearColor(0, 1, 1, 1);
 
 	Matrix4 ortho = Matrix4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 	//must be on the heap since layer will delete
@@ -45,6 +47,13 @@ int main() {
 			layer.add(new Sprite(x, y, .9f, .9f, &texture));
 		}
 	}
+
+	Group* g = new Group(math::Matrix4::translation(math::Vec3(-15.8f, 7.0f, 0.0f)));
+	Label* fps = new Label("", 0.4f, 0.4f, 0xffffffff);
+	g->add(new Sprite(0, 0, 4, 1.5f, math::Vec4(0.3f, 0.3f, 0.3f, 0.9f)));
+	g->add(fps);
+
+	layer.add(g);
 
 
 
@@ -69,11 +78,13 @@ int main() {
 
 		window.update();
 		frames++;
-		if (time.elasped() - timer > 1.0f) {
+		if (time.elapsed() - timer > 1.0f) {
 			timer += 1;
+			fps->setText(std::to_string(frames) + " fps");
 			printf("%d fps\n", frames);
 			frames = 0; 
 		}
+
 	}
 	return 0;
 }

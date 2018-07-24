@@ -35,6 +35,7 @@ namespace GEngine {
 				return;
 				//todo: log failure
 			}
+			virtual void drawString(const std::string& text, const math::Vec3 positiony, const unsigned int& color, unsigned int fontSize){}
 			virtual void begin(){}
 			virtual void end(){}
 			virtual void submit(const Renderable2D* renderable) = 0;
