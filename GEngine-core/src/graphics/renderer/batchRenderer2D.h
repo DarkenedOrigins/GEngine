@@ -6,7 +6,6 @@
 #include "renderable2d.h"
 #include "../buffers/indexBuffer.h"
 
-#include "../../../ext/freetype-gl/freetype-gl.h"
 
 namespace GEngine {
 	namespace graphics {
@@ -32,14 +31,10 @@ namespace GEngine {
 			VertexData* buffer_; //this is the buffer open in opengl
 			std::vector<GLuint> textureSlots_;
 
-			//string stuff
-			ftgl::texture_atlas_t* ftAtlas_;
-			ftgl::texture_font_t* ftFont_;
-
 		public:
 			BatchRenderer2D();
 			~BatchRenderer2D();
-			void drawString(const std::string& text, const math::Vec3 position, const unsigned int& color, unsigned int fontSize) override;
+			void drawString(const std::string& text, const math::Vec3& position, const Font& font, const unsigned int& color) override;
 			void begin() override;
 			void end() override;
 			void submit(const Renderable2D* renderable) override;

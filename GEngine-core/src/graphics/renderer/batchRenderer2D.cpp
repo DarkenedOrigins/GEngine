@@ -9,7 +9,7 @@ namespace GEngine {
 			delete ibo_;
 			glDeleteBuffers(1, &vbo_);
 		}
-		void BatchRenderer2D::drawString(const std::string & text, const math::Vec3 position, const unsigned int & color, unsigned int fontSize) {
+		void BatchRenderer2D::drawString(const std::string & text, const math::Vec3& position, const Font& font, const unsigned int & color) {
 			
 			using namespace ftgl;
 			
@@ -17,7 +17,7 @@ namespace GEngine {
 			float ts = 0;
 			bool found = false;
 			for (int i = 0; i < (int)textureSlots_.size(); i++) {
-				if (textureSlots_[i] == ftAtlas_->id) {
+				if (textureSlots_[i] == font.getID()) {
 					ts = (float)i + 1;
 					found = true;
 					break;
@@ -29,17 +29,17 @@ namespace GEngine {
 					this->flush();
 					this->begin();
 				}
-				textureSlots_.push_back(ftAtlas_->id);
+				textureSlots_.push_back(font.getID());
 				ts = (float)(textureSlots_.size());
 			}
 
 			float scaleX = 960.0f / 32.0f;
 			float scaleY = 540.0f / 18.0f;
 			float x = position.x;
-			int i = 0;
 
-			for (const auto & c : text) {
-				texture_glyph_t* glyph = texture_font_get_glyph(ftFont_, c);
+			for (int i = 0; i < text.length(); i++) {
+				char c = text[i];
+				texture_glyph_t* glyph = texture_font_get_glyph(font.getFTFont(), c);
 				if (glyph != nullptr) {
 
 					if (i > 0) {
@@ -83,7 +83,6 @@ namespace GEngine {
 
 					indexCount_ += 6;
 					x += glyph->advance_x / scaleX;
-					i++;
 
 				}
 			}
@@ -205,10 +204,7 @@ namespace GEngine {
 
 			ibo_ = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
 			glBindVertexArray(0);
-
-			//string rendering init
-			ftAtlas_ = ftgl::texture_atlas_new(512, 512, 2);
-			ftFont_ = ftgl::texture_font_new_from_file(ftAtlas_, 32, "Eczar-Regular.ttf");
+			
 		}
 	}
 }
