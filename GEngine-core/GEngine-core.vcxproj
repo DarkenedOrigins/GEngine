@@ -129,6 +129,8 @@
     <ClCompile Include="ext\freetype-gl\texture-atlas.c" />
     <ClCompile Include="ext\freetype-gl\texture-font.c" />
     <ClCompile Include="ext\freetype-gl\vector.c" />
+    <ClCompile Include="font.cpp" />
+    <ClCompile Include="fontManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\graphics\buffers\buffer.cpp" />
     <ClCompile Include="src\graphics\buffers\indexBuffer.cpp" />
@@ -157,6 +159,8 @@
     <ClInclude Include="ext\freetype-gl\texture-font.h" />
     <ClInclude Include="ext\freetype-gl\vec234.h" />
     <ClInclude Include="ext\freetype-gl\vector.h" />
+    <ClInclude Include="font.h" />
+    <ClInclude Include="fontManager.h" />
     <ClInclude Include="src\graphics\buffers\buffer.h" />
     <ClInclude Include="src\graphics\buffers\indexBuffer.h" />
     <ClInclude Include="src\graphics\buffers\vertexArray.h" />
