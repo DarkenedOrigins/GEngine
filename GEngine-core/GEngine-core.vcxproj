@@ -130,6 +130,8 @@
     <ClCompile Include="ext\freetype-gl\texture-atlas.c" />
     <ClCompile Include="ext\freetype-gl\texture-font.c" />
     <ClCompile Include="ext\freetype-gl\vector.c" />
+    <ClCompile Include="src\audio\sound.cpp" />
+    <ClCompile Include="src\audio\soundManager.cpp" />
     <ClCompile Include="src\graphics\font\font.cpp" />
     <ClCompile Include="src\graphics\font\fontManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -160,6 +162,8 @@
     <ClInclude Include="ext\freetype-gl\texture-font.h" />
     <ClInclude Include="ext\freetype-gl\vec234.h" />
     <ClInclude Include="ext\freetype-gl\vector.h" />
+    <ClInclude Include="src\audio\sound.h" />
+    <ClInclude Include="src\audio\soundManager.h" />
     <ClInclude Include="src\graphics\font\font.h" />
     <ClInclude Include="src\graphics\font\fontManager.h" />
     <ClInclude Include="src\graphics\buffers\buffer.h" />

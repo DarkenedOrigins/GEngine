@@ -21,19 +21,13 @@
 #include "src\graphics\texture.h"
 #include "src\graphics\renderer\label.h"
 #include "src/graphics/font/fontManager.h"
-#include <SFML/Audio.hpp>
-
+#include "src\audio\soundManager.h"
 
 int main() {
 	using namespace GEngine;
 	using namespace graphics;
 	using namespace math;
-
-	sf::Music music;
-	if (!music.openFromFile("test.wav"))
-		return -1; // error
-	music.play();
-
+	using namespace audio;
 
 	Window window("test", 960, 540);
 	//glClearColor(0, 1, 1, 1);
@@ -75,6 +69,12 @@ int main() {
 	Timer time;
 	float timer = 0;
 	int frames = 0;
+	
+	SoundManager::add(new Sound("Test", "test.wav"));
+	float vol = 0.5f;
+	SoundManager::get("Test")->setVolume(vol);
+
+
 	while (!window.closed()) {
 
 		window.clear();
@@ -83,6 +83,32 @@ int main() {
 		shader->enable();
 		shader->setUniform2f("light_pos", Vec2((float)(x*32.0f / (window.getWidth()) -16.0f), (float)(9.0f - y * 18.0f / (window.getHeight()))));
 		layer.render();
+
+		if (window.isKeyPressed(GLFW_KEY_P))
+			SoundManager::get("Test")->play();
+
+		if (window.isKeyPressed(GLFW_KEY_L))
+			SoundManager::get("Test")->loop();
+
+		if (window.isKeyPressed(GLFW_KEY_S))
+			SoundManager::get("Test")->stop();
+
+		if (window.isKeyPressed(GLFW_KEY_1))
+			SoundManager::get("Test")->pause();
+
+		if (window.isKeyPressed(GLFW_KEY_2))
+			SoundManager::get("Test")->resume();
+
+		if (window.isKeyPressed(GLFW_KEY_UP)) {
+			vol += 0.05f;
+			SoundManager::get("Test")->setVolume(vol);
+		}
+
+		if (window.isKeyPressed(GLFW_KEY_DOWN)) {
+			vol -= 0.05f;
+			SoundManager::get("Test")->setVolume(vol);
+		}
+
 
 		window.update();
 		frames++;
