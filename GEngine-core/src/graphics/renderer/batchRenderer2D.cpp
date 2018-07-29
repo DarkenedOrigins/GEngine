@@ -37,7 +37,7 @@ namespace GEngine {
 			float scaleY = 540.0f / 18.0f;
 			float x = position.x;
 
-			for (int i = 0; i < text.length(); i++) {
+			for (int i = 0; i < (int)text.length(); i++) {
 				char c = text[i];
 				texture_glyph_t* glyph = texture_font_get_glyph(font.getFTFont(), c);
 				if (glyph != nullptr) {

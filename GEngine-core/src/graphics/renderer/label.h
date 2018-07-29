@@ -1,7 +1,7 @@
 #pragma once
 
 #include "renderable2d.h"
-#include "../../../fontManager.h"
+#include "../font/fontManager.h"
 
 namespace GEngine {
 	namespace graphics {

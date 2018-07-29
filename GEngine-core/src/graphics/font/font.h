@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "ext\freetype-gl\freetype-gl.h"
+#include "../../../ext/freetype-gl/freetype-gl.h"
 
 
 namespace GEngine {

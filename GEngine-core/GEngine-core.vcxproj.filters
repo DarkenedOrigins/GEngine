@@ -138,10 +138,10 @@
     <ClCompile Include="src\graphics\layers\tilelayer.cpp">
       <Filter>Source Files\graphics\layers</Filter>
     </ClCompile>
-    <ClCompile Include="font.cpp">
+    <ClCompile Include="src\graphics\font\font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fontManager.cpp">
+    <ClCompile Include="src\graphics\font\fontManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -239,10 +239,10 @@
     <ClInclude Include="src\graphics\layers\tilelayer.h">
       <Filter>Header Files\graphics\layers</Filter>
     </ClInclude>
-    <ClInclude Include="font.h">
+    <ClInclude Include="src\graphics\font\font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fontManager.h">
+    <ClInclude Include="src\graphics\font\fontManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -20,13 +20,20 @@
 #include "src\graphics\layers\group.h"
 #include "src\graphics\texture.h"
 #include "src\graphics\renderer\label.h"
-#include "fontManager.h"
+#include "src/graphics/font/fontManager.h"
+#include <SFML/Audio.hpp>
 
 
 int main() {
 	using namespace GEngine;
 	using namespace graphics;
 	using namespace math;
+
+	sf::Music music;
+	if (!music.openFromFile("test.wav"))
+		return -1; // error
+	music.play();
+
 
 	Window window("test", 960, 540);
 	//glClearColor(0, 1, 1, 1);
@@ -50,7 +57,7 @@ int main() {
 	}
 
 	Group* g = new Group(math::Matrix4::translation(math::Vec3(-15.8f, 7.0f, 0.0f)));
-	Label* fps = new Label("", 0.4f, 0.4f, FontManager::getDefault(), math::Vec4(0, .2, 1, 1));
+	Label* fps = new Label("", 0.4f, 0.4f, FontManager::getDefault(), math::Vec4(0, .2f, 1, 1));
 	g->add(new Sprite(0, 0, 4, 1.5f, math::Vec4(0.3f, 0.3f, 0.3f, 0.9f)));
 	g->add(fps);
 
@@ -89,3 +96,4 @@ int main() {
 	}
 	return 0;
 }
+	

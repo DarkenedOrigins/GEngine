@@ -3,7 +3,7 @@
 #include <vector>
 #include <GL\glew.h>
 #include "../../math/math.h"
-#include "../../../font.h"
+#include "../font/font.h"
 
 namespace GEngine {
 	namespace graphics {
