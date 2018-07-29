@@ -3,6 +3,7 @@
 #include <vector>
 #include <GL\glew.h>
 #include "../../math/math.h"
+#include "../font/font.h"
 
 namespace GEngine {
 	namespace graphics {
@@ -35,6 +36,7 @@ namespace GEngine {
 				return;
 				//todo: log failure
 			}
+			virtual void drawString(const std::string& text, const math::Vec3& position, const Font& font, const unsigned int& color){}
 			virtual void begin(){}
 			virtual void end(){}
 			virtual void submit(const Renderable2D* renderable) = 0;

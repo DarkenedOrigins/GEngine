@@ -79,9 +79,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32;_LIB;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,6 +126,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ext\freetype-gl\platform.c" />
+    <ClCompile Include="ext\freetype-gl\texture-atlas.c" />
+    <ClCompile Include="ext\freetype-gl\texture-font.c" />
+    <ClCompile Include="ext\freetype-gl\vector.c" />
+    <ClCompile Include="src\audio\sound.cpp" />
+    <ClCompile Include="src\audio\soundManager.cpp" />
+    <ClCompile Include="src\graphics\font\font.cpp" />
+    <ClCompile Include="src\graphics\font\fontManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\graphics\buffers\buffer.cpp" />
     <ClCompile Include="src\graphics\buffers\indexBuffer.cpp" />
@@ -133,6 +142,7 @@
     <ClCompile Include="src\graphics\layers\layer.cpp" />
     <ClCompile Include="src\graphics\layers\tilelayer.cpp" />
     <ClCompile Include="src\graphics\renderer\batchRenderer2D.cpp" />
+    <ClCompile Include="src\graphics\renderer\label.cpp" />
     <ClCompile Include="src\graphics\renderer\simpler2Drenderer.cpp" />
     <ClCompile Include="src\graphics\renderer\sprite.cpp" />
     <ClCompile Include="src\graphics\renderer\staticSprite.cpp" />
@@ -145,6 +155,17 @@
     <ClCompile Include="src\math\vec4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ext\freetype-gl\freetype-gl.h" />
+    <ClInclude Include="ext\freetype-gl\opengl.h" />
+    <ClInclude Include="ext\freetype-gl\platform.h" />
+    <ClInclude Include="ext\freetype-gl\texture-atlas.h" />
+    <ClInclude Include="ext\freetype-gl\texture-font.h" />
+    <ClInclude Include="ext\freetype-gl\vec234.h" />
+    <ClInclude Include="ext\freetype-gl\vector.h" />
+    <ClInclude Include="src\audio\sound.h" />
+    <ClInclude Include="src\audio\soundManager.h" />
+    <ClInclude Include="src\graphics\font\font.h" />
+    <ClInclude Include="src\graphics\font\fontManager.h" />
     <ClInclude Include="src\graphics\buffers\buffer.h" />
     <ClInclude Include="src\graphics\buffers\indexBuffer.h" />
     <ClInclude Include="src\graphics\buffers\vertexArray.h" />
@@ -152,6 +173,7 @@
     <ClInclude Include="src\graphics\layers\layer.h" />
     <ClInclude Include="src\graphics\layers\tilelayer.h" />
     <ClInclude Include="src\graphics\renderer\batchRenderer2D.h" />
+    <ClInclude Include="src\graphics\renderer\label.h" />
     <ClInclude Include="src\graphics\renderer\renderable2d.h" />
     <ClInclude Include="src\graphics\renderer\renderer2D.h" />
     <ClInclude Include="src\graphics\renderer\simpler2Drenderer.h" />
@@ -170,9 +192,28 @@
     <ClInclude Include="src\utilities\timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="src\shaders\basic.frag" />
     <None Include="src\shaders\basic.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\sfml_audio.redist.2.5.0\build\native\sfml_audio.redist.targets" Condition="Exists('..\packages\sfml_audio.redist.2.5.0\build\native\sfml_audio.redist.targets')" />
+    <Import Project="..\packages\sfml_system.redist.2.5.0\build\native\sfml_system.redist.targets" Condition="Exists('..\packages\sfml_system.redist.2.5.0\build\native\sfml_system.redist.targets')" />
+    <Import Project="..\packages\sfml_system.2.5.0\build\native\sfml_system.targets" Condition="Exists('..\packages\sfml_system.2.5.0\build\native\sfml_system.targets')" />
+    <Import Project="..\packages\sfml_audio.2.5.0\build\native\sfml_audio.targets" Condition="Exists('..\packages\sfml_audio.2.5.0\build\native\sfml_audio.targets')" />
+    <Import Project="..\packages\freetype.redist.2.8.0.1\build\native\freetype.redist.targets" Condition="Exists('..\packages\freetype.redist.2.8.0.1\build\native\freetype.redist.targets')" />
+    <Import Project="..\packages\freetype.2.8.0.1\build\native\freetype.targets" Condition="Exists('..\packages\freetype.2.8.0.1\build\native\freetype.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\sfml_audio.redist.2.5.0\build\native\sfml_audio.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml_audio.redist.2.5.0\build\native\sfml_audio.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml_system.redist.2.5.0\build\native\sfml_system.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml_system.redist.2.5.0\build\native\sfml_system.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml_system.2.5.0\build\native\sfml_system.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml_system.2.5.0\build\native\sfml_system.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml_audio.2.5.0\build\native\sfml_audio.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml_audio.2.5.0\build\native\sfml_audio.targets'))" />
+    <Error Condition="!Exists('..\packages\freetype.redist.2.8.0.1\build\native\freetype.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\freetype.redist.2.8.0.1\build\native\freetype.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\freetype.2.8.0.1\build\native\freetype.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\freetype.2.8.0.1\build\native\freetype.targets'))" />
+  </Target>
 </Project>

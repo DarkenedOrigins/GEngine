@@ -107,15 +107,19 @@ namespace GEngine {
 			//successful create context
 			glfwMakeContextCurrent(window_);
 			glfwSetWindowUserPointer(window_, this);
-			glfwSetWindowSizeCallback(window_, window_resize_callback);
+			glfwSetFramebufferSizeCallback(window_, window_resize_callback);
 			glfwSetKeyCallback(window_, key_callback);
 			glfwSetMouseButtonCallback(window_, mouse_button_callback);
 			glfwSetCursorPosCallback(window_, cursor_position_callback);
+			glfwSwapInterval(0);
 
 			if (glewInit() != GLEW_OK) {
 				std::cout << "glew failed to init" << std::endl;
 				return false;
 			}
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
 
 			return true;
 		}

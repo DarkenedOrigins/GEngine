@@ -19,14 +19,18 @@
 #include "src\graphics\layers\tilelayer.h"
 #include "src\graphics\layers\group.h"
 #include "src\graphics\texture.h"
-
+#include "src\graphics\renderer\label.h"
+#include "src/graphics/font/fontManager.h"
+#include "src\audio\soundManager.h"
 
 int main() {
 	using namespace GEngine;
 	using namespace graphics;
 	using namespace math;
+	using namespace audio;
 
 	Window window("test", 960, 540);
+	//glClearColor(0, 1, 1, 1);
 
 	Matrix4 ortho = Matrix4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 	//must be on the heap since layer will delete
@@ -38,14 +42,21 @@ int main() {
 	Texture texture("test.png");
 
 
-	#if LARGE_TEST
+
 	for (float y = -9; y < 9; y += 1) {
 		for (float x = -16; x < 16; x += 1) {
 			//layer.add(new Sprite(x, y, .9f, .9f, Vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1, 1)));
 			layer.add(new Sprite(x, y, .9f, .9f, &texture));
 		}
 	}
-	#endif
+
+	Group* g = new Group(math::Matrix4::translation(math::Vec3(-15.8f, 7.0f, 0.0f)));
+	Label* fps = new Label("", 0.4f, 0.4f, FontManager::getDefault(), math::Vec4(0, .2f, 1, 1));
+	g->add(new Sprite(0, 0, 4, 1.5f, math::Vec4(0.3f, 0.3f, 0.3f, 0.9f)));
+	g->add(fps);
+
+	layer.add(g);
+
 
 
 	GLint texIds[] = { 0,1,2,3,4,5,6,7,8,9 };
@@ -58,6 +69,12 @@ int main() {
 	Timer time;
 	float timer = 0;
 	int frames = 0;
+	
+	SoundManager::add(new Sound("Test", "test.wav"));
+	float vol = 0.5f;
+	SoundManager::get("Test")->setVolume(vol);
+
+
 	while (!window.closed()) {
 
 		window.clear();
@@ -67,13 +84,42 @@ int main() {
 		shader->setUniform2f("light_pos", Vec2((float)(x*32.0f / (window.getWidth()) -16.0f), (float)(9.0f - y * 18.0f / (window.getHeight()))));
 		layer.render();
 
+		if (window.isKeyPressed(GLFW_KEY_P))
+			SoundManager::get("Test")->play();
+
+		if (window.isKeyPressed(GLFW_KEY_L))
+			SoundManager::get("Test")->loop();
+
+		if (window.isKeyPressed(GLFW_KEY_S))
+			SoundManager::get("Test")->stop();
+
+		if (window.isKeyPressed(GLFW_KEY_1))
+			SoundManager::get("Test")->pause();
+
+		if (window.isKeyPressed(GLFW_KEY_2))
+			SoundManager::get("Test")->resume();
+
+		if (window.isKeyPressed(GLFW_KEY_UP)) {
+			vol += 0.05f;
+			SoundManager::get("Test")->setVolume(vol);
+		}
+
+		if (window.isKeyPressed(GLFW_KEY_DOWN)) {
+			vol -= 0.05f;
+			SoundManager::get("Test")->setVolume(vol);
+		}
+
+
 		window.update();
 		frames++;
-		if (time.elasped() - timer > 1.0f) {
+		if (time.elapsed() - timer > 1.0f) {
 			timer += 1;
+			fps->setText(std::to_string(frames) + " fps");
 			printf("%d fps\n", frames);
 			frames = 0; 
 		}
+
 	}
 	return 0;
 }
+	

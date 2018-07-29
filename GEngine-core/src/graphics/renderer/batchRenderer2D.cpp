@@ -9,6 +9,87 @@ namespace GEngine {
 			delete ibo_;
 			glDeleteBuffers(1, &vbo_);
 		}
+		void BatchRenderer2D::drawString(const std::string & text, const math::Vec3& position, const Font& font, const unsigned int & color) {
+			
+			using namespace ftgl;
+			
+
+			float ts = 0;
+			bool found = false;
+			for (int i = 0; i < (int)textureSlots_.size(); i++) {
+				if (textureSlots_[i] == font.getID()) {
+					ts = (float)i + 1;
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				if (textureSlots_.size() >= 32) {
+					this->end();
+					this->flush();
+					this->begin();
+				}
+				textureSlots_.push_back(font.getID());
+				ts = (float)(textureSlots_.size());
+			}
+
+			float scaleX = 960.0f / 32.0f;
+			float scaleY = 540.0f / 18.0f;
+			float x = position.x;
+
+			for (int i = 0; i < (int)text.length(); i++) {
+				char c = text[i];
+				texture_glyph_t* glyph = texture_font_get_glyph(font.getFTFont(), c);
+				if (glyph != nullptr) {
+
+					if (i > 0) {
+						float kerning = texture_glyph_get_kerning(glyph, text[i - 1]);
+						x += kerning / scaleX;
+					}
+
+					float x0 = x + glyph->offset_x / scaleX;
+					float y0 = position.y + glyph->offset_y / scaleY;
+					float x1 = x0 + glyph->width / scaleX;
+					float y1 = y0 - glyph->height / scaleY; //its minus cuz positive y is up
+
+					float u0 = glyph->s0;
+					float v0 = glyph->t0;
+					float u1 = glyph->s1;
+					float v1 = glyph->t1;
+
+					buffer_->vertex = *transformationStackBack_ * math::Vec3(x0, y0, 0);
+					buffer_->texCoord = math::Vec2(u0, v0);
+					buffer_->texId = ts;
+					buffer_->color = color;
+					buffer_++;
+
+					buffer_->vertex = *transformationStackBack_ * math::Vec3(x0, y1, 0);
+					buffer_->texCoord = math::Vec2(u0, v1);
+					buffer_->texId = ts;
+					buffer_->color = color;
+					buffer_++;
+
+					buffer_->vertex = *transformationStackBack_ * math::Vec3(x1, y1, 0);
+					buffer_->texCoord = math::Vec2(u1, v1);
+					buffer_->texId = ts;
+					buffer_->color = color;
+					buffer_++;
+
+					buffer_->vertex = *transformationStackBack_ * math::Vec3(x1, y0, 0);
+					buffer_->texCoord = math::Vec2(u1, v0);
+					buffer_->texId = ts;
+					buffer_->color = color;
+					buffer_++;
+
+					indexCount_ += 6;
+					x += glyph->advance_x / scaleX;
+
+				}
+			}
+
+
+
+		}
 		void BatchRenderer2D::begin() {
 			glBindBuffer(GL_ARRAY_BUFFER, vbo_);
 			buffer_ = (VertexData*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
@@ -20,10 +101,9 @@ namespace GEngine {
 		void BatchRenderer2D::submit(const Renderable2D * renderable) {
 			const math::Vec3& position = renderable->getPosition();
 			const math::Vec2& size = renderable->getSize();
-			const math::Vec4 color = renderable->getColor();
+			const unsigned int c = renderable->getColor();
 			const std::vector<math::Vec2> texCoords = renderable->getTexCoord();
 			const GLuint texId = renderable->getTId();
-			unsigned int c = 0;
 
 			float ts = 0;
 			if (texId > 0) {
@@ -45,12 +125,6 @@ namespace GEngine {
 					ts = (float)(textureSlots_.size());
 				}
 
-			} else {
-				int r = color.x*255.0f;
-				int g = color.y*255.0f;
-				int b = color.z*255.0f;
-				int a = color.w*255.0f;
-				c = a << 24 | b << 16 | g << 8 | r;
 			}
 
 			//we are doing this 4 times cuz 4 vetex in a square
@@ -130,6 +204,7 @@ namespace GEngine {
 
 			ibo_ = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
 			glBindVertexArray(0);
+			
 		}
 	}
 }

@@ -12,6 +12,7 @@ namespace GEngine {
 			//methods
 			Matrix4();
 			Matrix4(float diagonal);
+			Matrix4& invert();
 			Matrix4& multiply(const Matrix4& other);
 			//extra multiply methods for various reasons
 			Vec3 multiply(const Vec3& other) const;

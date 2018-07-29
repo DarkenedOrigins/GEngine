@@ -1,9 +1,11 @@
 #pragma once
 
+
 #include <cstddef>
 #include "renderer2D.h"
 #include "renderable2d.h"
 #include "../buffers/indexBuffer.h"
+
 
 namespace GEngine {
 	namespace graphics {
@@ -32,6 +34,7 @@ namespace GEngine {
 		public:
 			BatchRenderer2D();
 			~BatchRenderer2D();
+			void drawString(const std::string& text, const math::Vec3& position, const Font& font, const unsigned int& color) override;
 			void begin() override;
 			void end() override;
 			void submit(const Renderable2D* renderable) override;

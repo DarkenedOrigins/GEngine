@@ -61,8 +61,8 @@ namespace GEngine {
 			GLuint vertex = glCreateShader(GL_VERTEX_SHADER);
 			GLuint fragment = glCreateShader(GL_FRAGMENT_SHADER);
 			//get shader from source file
-			std::string vertexString = FileUtils::readFile(vertPath_);
-			std::string fragString = FileUtils::readFile(fragPath_);
+			std::string vertexString = readFile(vertPath_);
+			std::string fragString = readFile(fragPath_);
 			const char* vertexSource = vertexString.c_str();
 			const char* fragmentSource = fragString.c_str();
 			// send this to open gl
