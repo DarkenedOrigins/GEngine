@@ -15,6 +15,9 @@ GEngine::audio::Sound::~Sound() {
 }
 
 void GEngine::audio::Sound::play() {
+	if (playing_) {
+		return;
+	}
 	musicPtr_->play();
 	playing_ = true;
 }
@@ -34,6 +37,9 @@ void GEngine::audio::Sound::pause() {
 }
 
 void GEngine::audio::Sound::resume() {
+	if (playing_) {
+		return;
+	}
 	musicPtr_->play();
 	musicPtr_->setPlayingOffset(playOffset_);
 	playing_ = true;

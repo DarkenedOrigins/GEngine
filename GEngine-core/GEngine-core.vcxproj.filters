@@ -117,13 +117,7 @@
     <ClCompile Include="src\graphics\renderer\batchRenderer2D.cpp">
       <Filter>Source Files\graphics\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\renderer\simpler2Drenderer.cpp">
-      <Filter>Source Files\graphics\renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\graphics\renderer\sprite.cpp">
-      <Filter>Source Files\graphics\renderable</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\renderer\staticSprite.cpp">
       <Filter>Source Files\graphics\renderable</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\renderer\label.cpp">
@@ -133,9 +127,6 @@
       <Filter>Source Files\graphics\layers</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\layers\layer.cpp">
-      <Filter>Source Files\graphics\layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\tilelayer.cpp">
       <Filter>Source Files\graphics\layers</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\font\font.cpp">
@@ -148,6 +139,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\audio\soundManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -221,9 +215,6 @@
     <ClInclude Include="src\graphics\renderer\renderer2D.h">
       <Filter>Header Files\graphics\renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\renderer\simpler2Drenderer.h">
-      <Filter>Header Files\graphics\renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\renderer\label.h">
       <Filter>Header Files\graphics\renderable</Filter>
     </ClInclude>
@@ -233,16 +224,10 @@
     <ClInclude Include="src\graphics\renderer\sprite.h">
       <Filter>Header Files\graphics\renderable</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\renderer\staticSprite.h">
-      <Filter>Header Files\graphics\renderable</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\layers\group.h">
       <Filter>Header Files\graphics\layers</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\layers\layer.h">
-      <Filter>Header Files\graphics\layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\tilelayer.h">
       <Filter>Header Files\graphics\layers</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\font\font.h">
@@ -255,6 +240,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\audio\soundManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

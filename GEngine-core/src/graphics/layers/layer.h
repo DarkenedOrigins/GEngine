@@ -13,11 +13,9 @@ namespace GEngine {
 			std::vector<Renderable2D*> renderables_;
 			Shader* shader_;
 			math::Matrix4 projectionMatrix_;
-		//protected funcs we dont want people to create a base class layer
-		protected:
-			Layer(Renderer2D* renderer, Shader* shader, math::Matrix4 projectionMatrix);
 		//public funcs
 		public:
+			Layer(Renderer2D* renderer, Shader* shader, math::Matrix4 projectionMatrix);
 			virtual ~Layer();
 			virtual void add(Renderable2D* renderable);
 			virtual void render();

@@ -1,3 +1,4 @@
+#if 0
 //the reason timer is on top is cuz it includes windows .h and glfw redefines apientry so windows.h needs to be before glfw and other shit
 #include "src\utilities\timer.h"
 #include <cstdlib>
@@ -12,11 +13,9 @@
 #include "src\graphics\buffers\indexBuffer.h"
 #include "src\graphics\buffers\vertexArray.h"
 #include "src\graphics\renderer\renderable2d.h"
-#include "src\graphics\renderer\simpler2Drenderer.h"
-#include "src\graphics\renderer\staticSprite.h"
 #include "src\graphics\renderer\batchRenderer2D.h"
 #include "src\graphics\renderer\sprite.h"
-#include "src\graphics\layers\tilelayer.h"
+#include "src\graphics\layers\layer.h"
 #include "src\graphics\layers\group.h"
 #include "src\graphics\texture.h"
 #include "src\graphics\renderer\label.h"
@@ -38,7 +37,7 @@ int main() {
 	shader->enable();
 	shader->setUniform2f("light_pos", Vec2(4.0f, 1.5f));
 
-	TileLayer layer(shader);
+	Layer layer(new BatchRenderer2D(), shader, math::Matrix4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 	Texture texture("test.png");
 
 
@@ -122,4 +121,4 @@ int main() {
 	}
 	return 0;
 }
-	
+#endif

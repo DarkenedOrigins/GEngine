@@ -55,6 +55,9 @@ namespace GEngine {
 			inline const std::vector<math::Vec2>& getTexCoord() const { return texCoords_; }
 			inline const GLuint getTId() const{ return texture_ == nullptr ? 0 : texture_->getId(); }
 
+			math::Vec2& changeSize() { return size_; }
+			math::Vec3& changePosition() { return position_; }
+
 			inline void setSize(math::Vec2& size) { size_ = size; }
 			inline void setPosition(math::Vec3& position) { position_ = position; }
 			inline void setColor(unsigned int color) { color_ = color; }

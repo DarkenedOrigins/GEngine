@@ -24,7 +24,7 @@ namespace GEngine {
 				}
 			}
 			if (!found) {
-				if (textureSlots_.size() >= 32) {
+				if (textureSlots_.size() >= RENDERER_MAX_TEXTURES) {
 					this->end();
 					this->flush();
 					this->begin();
@@ -33,8 +33,9 @@ namespace GEngine {
 				ts = (float)(textureSlots_.size());
 			}
 
-			float scaleX = 960.0f / 32.0f;
-			float scaleY = 540.0f / 18.0f;
+			const math::Vec2& scale = font.getScale();
+			float scaleX = scale.x;
+			float scaleY = scale.y;
 			float x = position.x;
 
 			for (int i = 0; i < (int)text.length(); i++) {
@@ -116,7 +117,7 @@ namespace GEngine {
 					}
 				}
 				if (!found) {
-					if (textureSlots_.size() >= 32) {
+					if (textureSlots_.size() >= RENDERER_MAX_TEXTURES) {
 						this->end();
 						this->flush();
 						this->begin();
@@ -167,6 +168,7 @@ namespace GEngine {
 			ibo_->unbind();
 			glBindVertexArray(0);
 			indexCount_ = 0;
+			textureSlots_.clear();
 		}
 
 
